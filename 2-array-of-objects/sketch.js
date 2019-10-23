@@ -36,7 +36,7 @@ class Ball {
     		stroke(0);
     		fill("red");
 		    //ellipse(this.x,this.y,10,10);
-        triangle(this.x, this.y, 10, 10, 10, 10);
+        triangle(this.x, this.y, 255, 255, 10, 10);
 	}
 
 	moveBall(){ //update the location of the ball, so it moves across the screen
