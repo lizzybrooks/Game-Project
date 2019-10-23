@@ -2,9 +2,13 @@
 let b;
 let anotherBall;
 
+
+
+
+
 function setup() {
   createCanvas(800, 400);
-  b = new Ball(0, 100,"red"); //make a new ball from the Ball class and call it b.
+  b = new Ball(0, 100,"blue");
   anotherBall = new Ball(200,20,"green");
 
 }
@@ -37,6 +41,7 @@ class Ball {
 		this.x = this.x+2;
 		this.y = this.y+.5;
 	}
+
 }
 
 class VBall {
