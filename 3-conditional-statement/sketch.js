@@ -14,12 +14,12 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background(255,20,255);
 
   me.drawMe();
   me.moveMe();
 
-  if (frameCount % 25 == 0) {
+  if (frameCount % 40 == 0) {
       let  b = new Ball(width, random(0,height), -3);
       balls.push(b);
       console.log(balls); //print the balls array to the console
@@ -57,20 +57,20 @@ class Avatar {
 	}
 
 	moveMe(){
-    if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move up by speed
-       this.y -= this.speed;
+    if (keyIsPressed===true) { //if you hold the up arrow, move up by speed
+      this.x = this.x+5+ this.speed;
+      this.y = this.y+10+this.speed;
     }
 
-    if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
-        this.y += this.speed;
+  //  if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
+      //  this.y += this.speed;
     }
 	}
 
-  die(){
+  // die(){
+  //
+  // }
 
-  }
-
-}
 
 
 //ball class from which to create new balls with similar properties.
