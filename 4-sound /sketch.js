@@ -4,11 +4,16 @@ let balls = [];
 //create a variable to hold your avatar
 let me;
 
+var ghost;
+
 let mySound;
+
+
 
 function preload() {
   soundFormats('wav', 'ogg');
   mySound = loadSound('oof.wav');
+  ghost = loadAnimation('sprite/Kodama001.png', 'sprite/Kodama015.png');
 }
 
 function setup() {
@@ -21,6 +26,7 @@ function setup() {
 
 function draw(){
 	background(220);
+
 
   me.drawMe();
   me.moveMe();
@@ -52,16 +58,18 @@ class Avatar {
 
 	drawMe(){  // draw the running person
     if(this.alive ==true){
-      stroke("green");
-      strokeWeight(3);
-      fill("blue");
-      ellipse(this.x,this.y,20,20);
-      line(this.x,this.y, this.x, this.y+40);
-      line(this.x, this.y+40, this.x-20, this.y+60);
-      line(this.x, this.y+40, this.x+10, this.y+50);
-      line(this.x+10, this.y+50, this.x+5, this.y+60);
-      line(this.x, this.y+15, this.x-10, this.y+25);
-      line(this.x-10, this.y+25, this.x+10, this.y+35);
+
+      animation(ghost, this.x, this.y);
+      // stroke("green");
+      // strokeWeight(3);
+      // fill("blue");
+      // ellipse(this.x,this.y,20,20);
+      // line(this.x,this.y, this.x, this.y+40);
+      // line(this.x, this.y+40, this.x-20, this.y+60);
+      // line(this.x, this.y+40, this.x+10, this.y+50);
+      // line(this.x+10, this.y+50, this.x+5, this.y+60);
+      // line(this.x, this.y+15, this.x-10, this.y+25);
+      // line(this.x-10, this.y+25, this.x+10, this.y+35);
 
 
     }
