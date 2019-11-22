@@ -91,7 +91,7 @@ class Avatar {
     }
 	}
 
-  die(){
+  die(){ 
 
   }
 
