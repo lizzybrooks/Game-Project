@@ -4,23 +4,29 @@ let balls = [];
 //create a variable to hold your avatar
 let me;
 
+var ghost;
+
 let mySound;
 
+
+
 function preload() {
-  soundFormats('mp3', 'ogg');
-  mySound = loadSound('boing1.mp3');
+  soundFormats('wav', 'ogg');
+  mySound = loadSound('oof.wav');
+  ghost = loadAnimation('sprite/Kodama001.png', 'sprite/Kodama015.png');
 }
 
 function setup() {
   createCanvas(500, 400);
 
   //make one avatar called me
-  me = new Avatar(width/2, 300, 3);
+  me = new Avatar(width/2, 300, 3,true);
 
 }
 
 function draw(){
-	background(220);
+	background(0,0,0);
+
 
   me.drawMe();
   me.moveMe();
@@ -43,23 +49,36 @@ function draw(){
 //avatar class
 class Avatar {
 
-	constructor(x,y, speed){ //every avatar needs an x value, a y value, and a speed
+	constructor(x,y, speed,alive){ //every avatar needs an x value, a y value, and a speed
 		    this.x = x;
     		this.y = y;
         this.speed = speed;
+        this.alive = alive;
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
-        strokeWeight(3);
-    		fill("blue");
-		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
-        line(this.x-10, this.y+25, this.x+10, this.y+35);
+    if(this.alive ==true){
+
+      animation(ghost, this.x, this.y);
+      // stroke("green");
+      // strokeWeight(3);
+      // fill("blue");
+      // ellipse(this.x,this.y,20,20);
+      // line(this.x,this.y, this.x, this.y+40);
+      // line(this.x, this.y+40, this.x-20, this.y+60);
+      // line(this.x, this.y+40, this.x+10, this.y+50);
+      // line(this.x+10, this.y+50, this.x+5, this.y+60);
+      // line(this.x, this.y+15, this.x-10, this.y+25);
+      // line(this.x-10, this.y+25, this.x+10, this.y+35);
+
+
+    }
+    else{
+      textSize(60)
+      fill("red")
+      text('you died',175,175)
+    }
+
 	}
 
 	moveMe(){
@@ -72,7 +91,7 @@ class Avatar {
     }
 	}
 
-  die(){
+  die(){ 
 
   }
 
@@ -109,6 +128,7 @@ class Ball {
       			this.speed = -this.speed;
             mySound.setVolume(0.1);
             mySound.play();
+            me.alive=false;
     		}
   	}
 
